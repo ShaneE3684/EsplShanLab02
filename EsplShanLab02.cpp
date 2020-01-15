@@ -8,82 +8,91 @@ using namespace std;
 
 struct fraction
 {
-    int numerator;
-    int denominator;
+	int numerator;
+	int denominator;
 };
 
 //Function Prototypes
-void recievefraction(int, int)
-{ }
+fraction recievefraction();
+fraction reducefraction(int, int);
+void displayfraction(int, int);
 
-void reducefraction(int, int)
-{ }
 
-void displayfraction(int, int)
-{ }
-
-//The main function recieves a fraction from the user and displays the fractin in lowest terms.
+//The main function calls the other 3 functions to recieve, reduce, and display a function.
 int main()
 {
-    fraction frac;
+	fraction frac;
 
-    //Recieve the fraction from the user
-    recievefraction();
+	cout << "Hello! This function can reduce a function to its lowest form." << endl;
+	cout << " " << endl;
 
-    //Reduce the fraction to its lowest terms
-    reducefraction();
+	recievefraction();
 
-    //Display the reduced fraction to the user
-    displayfraction();
+	reducefraction(frac.numerator, frac.denominator);
 
-    return 0;
-{ 
+	displayfraction(frac.numerator, frac.denominator);
 
-//This function recieves a fraction from the user and returns it to the main function.
-void recievefraction(int &frac.numerator, int &frac.denominator)
-{
-    struct fraction frac;
-    cout << "Please enter in the numerator of the fraction: " << endl;
-    cin >> frac.numerator;
-    cout << " " << endl;
-    cout << "Please enter in the denominator of the fraction: " << endl;
-    cin >> frac.denominator;
-    cout << " " << endl;
+	return 0;
 }
 
-//This function recieves the function that was entered earlier and reduces it to is simplest form.
-void reducefraction(int &frac.numerator, int &frac.denominator)
+
+//This function recieves the fraction from the user.
+fraction recievefraction()
 {
-    struct fraction frac;
-    if (frac.numerator < frac.denominator)
-    {
-        int factor = frac.numerator;
+	fraction frac;
 
-        while ((frac.numerator % fraction.denominator) != 0)
-        {
-            factor--;
-        }
-        frac.numerator = (frac.numerator / factor);
-        frac.denominator = (frac.denominator / factor);
-    }
+	cout << "Please enter in the fraction numerator and denominator." << endl;
+	cout << " " << endl;
+	cout << "Numerator: ";
+	cin >> frac.numerator;
+	cout << " " << endl;
+	cout << "Denominator: ";
+	cin >> frac.denominator;
+	cout << " " << endl;
 
-    if (frac.denominator < fraction.numerator)
-    {
-        int factor = frac.denominator;
-
-        while ((frac.denominator % frac.numerator) != 0)
-        {
-            factor--;
-        }
-        frac.numerator = (frac.numerator / factor);
-        frac.denominator = (frac.denominator / factor);
-    }
-    
+	return frac;
 }
 
-//This function recieves a fraction and displays it for the user.
-void displayfraction(int& frac.numerator, int& frac.denominator)
+
+//This function reduces the fraction to it's lowest form.
+fraction reducefraction(int numerator, int denominator)
 {
-    struct fraction frac;
-    cout << "The fraction in its lowest form is: " << frac.numerator << "/" << frac.denominator << endl;
+	fraction frac{ numerator, denominator };
+
+	int factor;
+
+	if (numerator < denominator)
+	{
+		factor = numerator;
+
+		while (denominator % factor != 0)
+		{
+			factor--;
+		}
+
+		numerator = numerator / factor;
+		denominator = denominator / factor;
+	}
+
+	else
+	{
+		factor = denominator;
+
+		while (numerator % factor != 0)
+		{
+			factor--;
+		}
+
+		numerator = numerator / factor;
+		denominator = denominator / factor;
+	}
+
+	return frac;
+}
+
+
+//This function displays the reduces fraction to the user.
+void displayfraction(int numerator, int denominator)
+{
+	cout << "The fraction in its lowest form is: " << numerator << "/" << denominator << endl;
 }
